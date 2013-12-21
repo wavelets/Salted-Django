@@ -1,3 +1,3 @@
 virtualenvs:
   - dir:  '/opt/virtualenvs/django1'
-    requirements: salt://django1-requirements.txt
+    requirements: salt://virtualenvs/django1-requirements.txt
