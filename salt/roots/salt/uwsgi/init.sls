@@ -23,8 +23,6 @@ uwsgi-service:
   service.running:
     - enable: True
     - name: uwsgi
-    - watch:
-      - file: /etc/uwsgi/apps-enabled/*
     - require:
       - file: /etc/init/uwsgi.conf
 

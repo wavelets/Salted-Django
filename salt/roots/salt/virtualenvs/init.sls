@@ -6,6 +6,7 @@ include:
   virtualenv.managed:
     - system_site_packages: False
     - requirements: {{ venv.requirements }}
+    - user: {{ venv.user }}
     - require:
       - sls: packages
 {% endfor %}

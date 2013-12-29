@@ -6,3 +6,4 @@ base:
     - virtualenvs
     - postgresql
     - uwsgi
+    - django-projects
