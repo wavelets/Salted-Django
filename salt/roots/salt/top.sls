@@ -5,3 +5,4 @@ base:
     - pip-packages
     - virtualenvs
     - postgresql
+    - uwsgi
