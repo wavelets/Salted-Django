@@ -1,5 +1,5 @@
-projects:
+project:
   - name: django1
-    base: /usr/share/nginx/django1
-    venv: /opt/virtualenvs/django1
-    module: django1.wsgi
+    base: /home/vagrant/django1/django1/django1
+    venv: /home/vagrant/django1/.venv
+    module: wsgi.py

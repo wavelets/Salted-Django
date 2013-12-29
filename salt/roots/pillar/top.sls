@@ -4,3 +4,4 @@ base:
     - packages
     - pip-packages
     - virtualenvs
+    - projects
