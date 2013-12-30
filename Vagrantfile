@@ -25,6 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     minion.vm.box = "precise64"
     config.vm.hostname = "minion"
     minion.vm.network :private_network, ip: "192.168.33.11"
+    config.vm.network "forwarded_port", guest: 80, host: 8080
     config.vm.provision :salt do |salt|
       salt.install_master = false
       salt.minion_config = "salt/roots/minion"
