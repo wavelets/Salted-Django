@@ -6,3 +6,6 @@ project:
     dbname: django1DB
     dbuser: dj1user
     dbpasswd: somereallylongpasswordgoeshere
+    dbengine: django.db.backends.postgresql_psycopg2
+    dbhost: localhost
+    dbport: 5432

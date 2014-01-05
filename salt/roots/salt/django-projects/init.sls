@@ -1,6 +1,7 @@
 include:
     - virtualenvs
     - postgresql
+    - uwsgi
 
 {% for item in pillar.get('project', []) %}
 /etc/uwsgi/apps-available/{{ item.name }}.ini:
@@ -70,5 +71,21 @@ create Django project:
     - require:
         - sls: virtualenvs
         - file: /home/vagrant/{{ item.name }}
+
+/home/vagrant/{{ item.name}}/{{ item.name }}/{{ item.name }}/settings.py:
+  file.managed:
+    - source: salt://django-projects/settings.py
+    - template: jinja
+    - user: vagrant
+    - group: vagrant
+    - mode: 644
+    - context:
+        dbuser: {{ item.dbuser }}
+        dbpasswd: {{ item.dbpasswd }}
+        dbname: {{ item.dbname }}
+        dbengine: {{ item.dbengine }}
+        dbhost: {{ item.dbhost }}
+        dbport: {{ item.dbport }}
+        name: {{ item.name }}
 
 {% endfor %}
