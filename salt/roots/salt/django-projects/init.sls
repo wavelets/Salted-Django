@@ -91,7 +91,7 @@ create Django project:
 syncdb Django project:
   cmd.run:
     - user: vagrant
-    - name: ". .venv/bin/activate && cd django1 && python manage.py syncdb --noinput"
+    - name: ". .venv/bin/activate && cd django1 && python manage.py syncdb --noinput && python manage.py collectstatic --noinput"
     - cwd: /home/vagrant/{{ item.name }}/
     - order: last
 {% endfor %}
