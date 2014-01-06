@@ -2,8 +2,46 @@ include:
     - virtualenvs
     - postgresql
     - uwsgi
+    - packages
 
 {% for item in pillar.get('project', []) %}
+
+nginx:
+  service:
+    - running
+    - enable: True
+    - watch:
+        - file: enable-nginx-site-{{ item.name}}
+        - file: default-nginx
+
+default-nginx:
+  file.absent:
+    - name: /etc/nginx/sites-enabled/default
+    - require_in:
+        - service: nginx
+
+
+nginx-conf-{{ item.name}}:
+  file.managed:
+    - name: /etc/nginx/sites-available/{{ item.name}}.conf
+    - source: salt://django-projects/nginx-project.conf
+    - template: jinja
+    - owner: www-data
+    - group: www-data
+    - mode: 755
+    - context:
+        name: {{ item.name }}
+    - require_in:
+        - service: nginx
+
+enable-nginx-site-{{ item.name }}:
+  file.symlink:
+    - name: /etc/nginx/sites-enabled/{{ item.name }}.conf
+    - target: /etc/nginx/sites-available/{{ item.name }}.conf
+    - force: false
+    - require: 
+        - file: nginx-conf-{{ item.name }}
+
 /etc/uwsgi/apps-available/{{ item.name }}.ini:
   file.managed:
     - source: salt://django-projects/uwsgi.ini
