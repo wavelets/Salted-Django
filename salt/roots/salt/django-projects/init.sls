@@ -88,4 +88,10 @@ create Django project:
         dbport: {{ item.dbport }}
         name: {{ item.name }}
 
+syncdb Django project:
+  cmd.run:
+    - user: vagrant
+    - name: ". .venv/bin/activate && cd django1 && python manage.py syncdb --noinput"
+    - cwd: /home/vagrant/{{ item.name }}/
+    - order: last
 {% endfor %}

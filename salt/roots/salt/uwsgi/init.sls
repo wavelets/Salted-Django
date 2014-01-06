@@ -25,6 +25,7 @@ uwsgi-service:
     - name: uwsgi
     - require:
       - file: /etc/init/uwsgi.conf
+      - sls: pip-packages
 
 /var/log/uwsgi:
   file.directory:
