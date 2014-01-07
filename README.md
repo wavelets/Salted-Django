@@ -1,4 +1,5 @@
-As of Dec 29, 2013 17:34 PM PST
+As of Jan 06, 2014 18:33 PM PST
+
 
 	.
 	├── README.md
@@ -19,6 +20,8 @@ As of Dec 29, 2013 17:34 PM PST
 	│           │   ├── django-settings.py
 	│           │   ├── init.sls
 	│           │   ├── nginx-project.conf
+	│           │   ├── pg_hba.conf
+	│           │   ├── settings.py
 	│           │   └── uwsgi.ini
 	│           ├── packages
 	│           │   └── init.sls
@@ -38,5 +41,4 @@ As of Dec 29, 2013 17:34 PM PST
 	│               └── init.sls
 	└── Vagrantfile
 
-	12 directories, 24 files
-
+	12 directories, 26 files
